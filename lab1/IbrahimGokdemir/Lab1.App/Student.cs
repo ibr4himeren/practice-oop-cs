@@ -1,24 +1,30 @@
-using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public class Student
 {
-    public int Id { get; set; }
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-    public string Email { get; set; }
-    public double AverageGrade { get; set; }
+    public int Id { get; }
+    public string FirstName { get; }
+    public string LastName { get; }
+    public string Email { get; }
+    public List<int> Grades { get; }
 
-    public Student(int id, string firstName, string lastName, string email, double averageGrade)
+    public Student(int id, string firstName, string lastName, string email, List<int> grades)
     {
         Id = id;
         FirstName = firstName;
         LastName = lastName;
         Email = email;
-        AverageGrade = averageGrade;
+        Grades = grades;
     }
 
-    public void PrintInfo()
+    public double GetAverage()
     {
-        Console.WriteLine($"ID: {Id} | {FirstName} {LastName} | Email: {Email} | Avg: {AverageGrade}");
+        return Grades.Average();
+    }
+
+    public string Describe()
+    {
+        return $"{Id} - {FirstName} {LastName} | Avg: {GetAverage():0.00}";
     }
 }

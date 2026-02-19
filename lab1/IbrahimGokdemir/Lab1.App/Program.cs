@@ -1,20 +1,25 @@
 ﻿using System;
+using System.Collections.Generic;
 
 class Program
 {
     static void Main(string[] args)
     {
         Group group = new Group("OOP Group");
+        GroupService service = new GroupService();
 
-        Student s1 = new Student(1, "Mudar", "Shawakh", "m@mail.com", 8.5);
-        Student s2 = new Student(2, "a", "a", "a@mail.com", 9.1);
-        Student s3 = new Student(3, "b", "b", "b@mail.com", 7.8);
+        Student s1 = new Student(1, "Ali", "Yilmaz", "ali@mail.com", new List<int> { 8, 9, 10 });
+        Student s2 = new Student(2, "Ayse", "Demir", "ayse@mail.com", new List<int> { 7, 8, 9 });
+        Student s3 = new Student(3, "Mehmet", "Kaya", "mehmet@mail.com", new List<int> { 6, 7, 8 });
 
-        group.AddStudent(s1);
-        group.AddStudent(s2);
-        group.AddStudent(s3);
+        service.RegisterStudent(group, s1);
+        service.RegisterStudent(group, s2);
+        service.RegisterStudent(group, s3);
 
-        group.PrintAll();
+        foreach (var student in service.GetAllStudents(group))
+        {
+            Console.WriteLine(student.Describe());
+        }
 
         Console.ReadKey();
     }
