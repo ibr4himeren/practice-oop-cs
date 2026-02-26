@@ -25,6 +25,6 @@ public class Student
 
     public string Describe()
     {
-        return $"{Id} - {FirstName} {LastName} | Avg: {GetAverage():0.00}";
+        return $"{Id} - {FirstName} {LastName} | Email: {Email}";
     }
 }

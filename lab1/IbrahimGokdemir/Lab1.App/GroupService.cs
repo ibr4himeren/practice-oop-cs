@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-public class GroupService
+public class GroupService : IGroupService
 {
     public void RegisterStudent(Group group, Student student)
     {
